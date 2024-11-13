@@ -1,3 +1,119 @@
+# OnlyFunds - Mobile
+**Home of The Best Cashless Transaction**
+
+Welcome to OnlyFunds, the best platform for cashless transactions.
+
+[OnlyFunds' Website]()
+
+## Contents:
+- [Tugas 7](#tugas-7)
+- [Tugas 8](#tugas-8)
+
+## Tugas 8 <a id="tugas-8"></a>
+
+### 1. Apa kegunaan `const` di Flutter? Jelaskan apa keuntungan ketika menggunakan `const` pada kode Flutter. Kapan sebaiknya kita menggunakan `const`, dan kapan sebaiknya tidak digunakan?
+
+- **Kegunaan `const`**: Digunakan untuk mendefinisikan nilai yang tidak akan berubah selama runtime. `const` memungkinkan Flutter untuk mengoptimalkan performa aplikasi dengan mengurangi beban rekonstruksi widget.
+- **Keuntungan menggunakan `const`**:
+  - **Performa yang lebih baik**: Mengurangi jumlah objek yang harus dibuat ulang.
+  - **Immutability**: Memastikan nilai tidak berubah, meningkatkan keamanan dan keandalan kode.
+- **Kapan menggunakan `const`**:
+  - Ketika nilai atau widget tidak akan berubah setelah didefinisikan.
+- **Kapan tidak menggunakan `const`**:
+  - Ketika nilai atau widget perlu berubah selama runtime atau berdasarkan interaksi pengguna.
+
+### 2. Jelaskan dan bandingkan penggunaan `Column` dan `Row` pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+- **`Column`**:
+  - Menyusun widget anak secara vertikal.
+  - Cocok untuk layout yang membutuhkan susunan vertikal, seperti daftar item.
+  - **Contoh**:
+    ```dart
+    Column(
+      children: [
+        Text('Item 1'),
+        Text('Item 2'),
+        Text('Item 3'),
+      ],
+    )
+    ```
+- **`Row`**:
+  - Menyusun widget anak secara horizontal.
+  - Cocok untuk layout yang membutuhkan susunan horizontal, seperti bar navigasi.
+  - **Contoh**:
+    ```dart
+    Row(
+      children: [
+        Icon(Icons.home),
+        Icon(Icons.search),
+        Icon(Icons.settings),
+      ],
+    )
+    ```
+- **Perbandingan**:
+  - `Column` mengatur widget secara vertikal, sedangkan `Row` mengatur secara horizontal.
+  - Pilihan antara keduanya tergantung pada orientasi layout yang diinginkan.
+
+### 3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+- **Elemen input yang digunakan**:
+  - `TextField`: Untuk memasukkan teks.
+  - `Checkbox`: Untuk pilihan ganda.
+  - `DropdownButton`: Untuk memilih dari daftar opsi.
+- **Elemen input lain yang tidak digunakan**:
+  - `Radio`: Untuk pilihan eksklusif.
+  - `Switch`: Untuk toggling on/off.
+  - `Slider`: Untuk memilih nilai dari rentang tertentu.
+- **Penjelasan**: Elemen-elemen tersebut tidak digunakan karena kebutuhan form pada tugas tidak memerlukannya, namun bisa digunakan untuk interaksi yang lebih kompleks.
+
+### 4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+- **Mengatur Tema**:
+  - Mendefinisikan `ThemeData` secara global di widget `MaterialApp`.
+  - Menentukan warna primer, warna sekunder, font, dan gaya teks.
+- **Implementasi**:
+  - Ya, saya mengimplementasikan tema dengan mendefinisikan `ThemeData` pada `MaterialApp` untuk memastikan konsistensi tampilan di seluruh aplikasi.
+  - **Contoh**:
+    ```dart
+    MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        accentColor: Colors.amber,
+        textTheme: TextTheme(
+          bodyText2: TextStyle(fontSize: 16.0),
+        ),
+      ),
+      home: HomePage(),
+    )
+    ```
+
+### 5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+- **Menangani Navigasi**:
+  - Menggunakan `Navigator` untuk berpindah antar halaman.
+  - Mendefinisikan rute (routes) secara terpusat dalam `MaterialApp`.
+  - Menggunakan `push` dan `pop` untuk menavigasi ke halaman baru atau kembali.
+- **Implementasi**:
+  - Mendefinisikan rute dalam `MaterialApp`:
+    ```dart
+    MaterialApp(
+      routes: {
+        '/': (context) => HomePage(),
+        '/detail': (context) => DetailPage(),
+      },
+    )
+    ```
+  - Navigasi ke halaman detail:
+    ```dart
+    Navigator.pushNamed(context, '/detail');
+    ```
+  - Kembali ke halaman sebelumnya:
+    ```dart
+    Navigator.pop(context);
+    ```
+
+## Tugas 7 <a id="tugas-7"></a>
+
 ### 1. Stateless Widget dan Stateful Widget
 
 **Stateless Widget** adalah widget yang tidak memiliki state internal yang dapat berubah. Setelah dibangun, widget ini tidak akan berubah selama siklus hidupnya. Contoh: `Text`, `Icon`.
