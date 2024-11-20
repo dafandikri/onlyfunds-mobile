@@ -8,6 +8,137 @@ Welcome to OnlyFunds, the best platform for cashless transactions.
 ## Contents:
 - [Tugas 7](#tugas-7)
 - [Tugas 8](#tugas-8)
+- [Tugas 9](#tugas-9)
+
+## Tugas 9 <a id="tugas-9"></a>
+
+### 1. Apa kegunaan `const` di Flutter? Jelaskan apa keuntungan ketika menggunakan `const` pada kode Flutter. Kapan sebaiknya kita menggunakan `const`, dan kapan sebaiknya tidak digunakan?
+
+- **Kegunaan `const` di Flutter**: `const` digunakan untuk mendefinisikan nilai atau widget yang bersifat konstan pada waktu kompilasi. Nilai atau widget yang ditandai dengan `const` tidak akan berubah selama runtime dan sudah diketahui pada saat kompilasi.
+
+- **Keuntungan menggunakan `const`**:
+  - **Optimisasi Performa**: Widget atau nilai `const` hanya dibuat sekali dan dapat digunakan kembali tanpa perlu dibuat ulang, sehingga meningkatkan efisiensi aplikasi.
+  - **Penggunaan Memori Lebih Efisien**: Mengurangi penggunaan memori karena instance yang sama dapat digunakan di berbagai tempat.
+  - **Kode Lebih Aman dan Predictable**: Nilai yang tidak berubah membuat kode lebih mudah dipahami dan lebih sedikit bug.
+
+- **Kapan sebaiknya menggunakan `const`**:
+  - Saat nilai atau widget bersifat statis dan tidak akan berubah selama runtime.
+  - Ketika mendefinisikan widget yang tidak bergantung pada data dinamis atau input pengguna.
+
+- **Kapan sebaiknya tidak menggunakan `const`**:
+  - Jika nilai atau widget perlu berubah selama runtime atau bergantung pada data yang berubah.
+  - Ketika widget memerlukan parameter yang baru diketahui saat runtime.
+
+### 2. Jelaskan dan bandingkan penggunaan `Column` dan `Row` pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+- **`Column`**:
+  - Menyusun widget anak secara vertikal (dari atas ke bawah).
+  - Digunakan ketika ingin menempatkan widget secara berurutan ke bawah.
+  - **Contoh**:
+    ```dart
+    Column(
+      children: [
+        Text('Judul'),
+        Text('Subjudul'),
+        ElevatedButton(
+          onPressed: () {},
+          child: Text('Klik Disini'),
+        ),
+      ],
+    )
+    ```
+
+- **`Row`**:
+  - Menyusun widget anak secara horizontal (dari kiri ke kanan).
+  - Digunakan ketika ingin menempatkan widget secara berdampingan.
+  - **Contoh**:
+    ```dart
+    Row(
+      children: [
+        Icon(Icons.home),
+        Text('Beranda'),
+        Icon(Icons.settings),
+        Text('Pengaturan'),
+      ],
+    )
+    ```
+
+- **Perbandingan**:
+  - **Arah Tata Letak**: `Column` untuk vertikal, `Row` untuk horizontal.
+  - **Properti Alignment**: Keduanya memiliki `mainAxisAlignment` dan `crossAxisAlignment` untuk mengatur posisi widget anak.
+  - **Penggunaan**: Dapat dikombinasikan untuk membuat layout yang kompleks dengan nesting `Column` dan `Row`.
+
+### 3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+- **Elemen input yang digunakan**:
+  - `TextFormField`: Untuk input teks dari pengguna.
+  - `DropdownButtonFormField`: Untuk memilih satu opsi dari beberapa pilihan.
+  - `CheckboxListTile`: Untuk pilihan ganda dengan checkbox.
+
+- **Elemen input lain yang tidak digunakan**:
+  - `Radio` dan `RadioListTile`: Untuk pilihan tunggal antara beberapa opsi.
+  - `Switch` dan `SwitchListTile`: Untuk mengaktifkan atau menonaktifkan suatu opsi.
+  - `Slider`: Untuk memilih nilai dari rentang tertentu.
+  - `DatePicker` dan `TimePicker`: Untuk input tanggal dan waktu.
+
+- **Penjelasan**: Elemen-elemen tersebut tidak digunakan karena tidak sesuai dengan kebutuhan form pada tugas ini. Namun, elemen tersebut berguna untuk berbagai jenis input yang berbeda dalam aplikasi.
+
+### 4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+- **Cara mengatur tema dalam Flutter**:
+  - Mendefinisikan `ThemeData` dalam `MaterialApp` pada root aplikasi.
+  - Menentukan warna utama (`primarySwatch`), warna aksen (`accentColor`), font, dan gaya teks lainnya.
+  - Mengaplikasikan tema tersebut secara konsisten di seluruh widget dalam aplikasi.
+
+- **Implementasi pada aplikasi**:
+  - Ya, saya mengimplementasikan tema dengan mendefinisikan `ThemeData` di `MaterialApp`.
+  - **Contoh**:
+    ```dart
+    MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        accentColor: Colors.amber,
+        fontFamily: 'Roboto',
+        textTheme: TextTheme(
+          bodyText2: TextStyle(fontSize: 16.0),
+        ),
+      ),
+      home: MyHomePage(),
+    )
+    ```
+
+### 5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+- **Menangani navigasi**:
+  - Menggunakan widget `Navigator` untuk memanage stack navigasi halaman.
+  - Menggunakan `Navigator.push()` atau `Navigator.pushNamed()` untuk pindah ke halaman baru.
+  - Menggunakan `Navigator.pop()` untuk kembali ke halaman sebelumnya.
+  - Mendefinisikan named routes dalam `MaterialApp` untuk mempermudah navigasi antar halaman.
+  - Menggunakan widget navigasi seperti `Drawer`, `TabBar`, atau `BottomNavigationBar` untuk navigasi yang lebih kompleks.
+
+- **Contoh implementasi**:
+  ```dart
+  // Mendefinisikan routes dalam MaterialApp
+  MaterialApp(
+    initialRoute: '/',
+    routes: {
+      '/': (context) => HomePage(),
+      '/about': (context) => AboutPage(),
+      '/contact': (context) => ContactPage(),
+    },
+  );
+
+  // Navigasi ke halaman 'About'
+  ElevatedButton(
+    onPressed: () {
+      Navigator.pushNamed(context, '/about');
+    },
+    child: Text('Tentang Kami'),
+  );
+
+  // Kembali ke halaman sebelumnya
+  Navigator.pop(context);
+  ```
 
 ## Tugas 8 <a id="tugas-8"></a>
 
